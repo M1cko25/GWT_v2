@@ -1,0 +1,998 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FFB3C1D-63F8-41C1-8873-A697FEBC7EC4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GWT_V2</RootNamespace>
+    <AssemblyName>GWT_V2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.25.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.25.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\..\..\Guna\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.3.5\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.3.5\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=8.4.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.4.0\lib\net462\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Areas.Designer.cs">
+      <DependentUpon>Areas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Exercises.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Exercises.Designer.cs">
+      <DependentUpon>Exercises.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HistoryControl.Designer.cs">
+      <DependentUpon>HistoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IntroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntroForm.Designer.cs">
+      <DependentUpon>IntroForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MsgBoxYN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MsgBoxYN.Designer.cs">
+      <DependentUpon>MsgBoxYN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Routine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Routine.Designer.cs">
+      <DependentUpon>Routine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="routineCheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="routineCheck.Designer.cs">
+      <DependentUpon>routineCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Workout.Designer.cs">
+      <DependentUpon>Workout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkoutDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorkoutDisplay.Designer.cs">
+      <DependentUpon>WorkoutDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workouts.cs" />
+    <Compile Include="BMI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BMI.Designer.cs">
+      <DependentUpon>BMI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loading1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Loading1.Designer.cs">
+      <DependentUpon>Loading1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="loading2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="loading2.Designer.cs">
+      <DependentUpon>loading2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gender.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gender.Designer.cs">
+      <DependentUpon>Gender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MsgBoxOk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MsgBoxOk.Designer.cs">
+      <DependentUpon>MsgBoxOk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setup.Designer.cs">
+      <DependentUpon>Setup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUp.Designer.cs">
+      <DependentUpon>SignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Training.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Training.Designer.cs">
+      <DependentUpon>Training.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="WorkoutView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkoutView.Designer.cs">
+      <DependentUpon>WorkoutView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Areas.resx">
+      <DependentUpon>Areas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BMI.resx">
+      <DependentUpon>BMI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exercises.resx">
+      <DependentUpon>Exercises.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryControl.resx">
+      <DependentUpon>HistoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IntroForm.resx">
+      <DependentUpon>IntroForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loading1.resx">
+      <DependentUpon>Loading1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loading2.resx">
+      <DependentUpon>loading2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gender.resx">
+      <DependentUpon>Gender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MsgBoxOk.resx">
+      <DependentUpon>MsgBoxOk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MsgBoxYN.resx">
+      <DependentUpon>MsgBoxYN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Routine.resx">
+      <DependentUpon>Routine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="routineCheck.resx">
+      <DependentUpon>routineCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setup.resx">
+      <DependentUpon>Setup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUp.resx">
+      <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Training.resx">
+      <DependentUpon>Training.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workout.resx">
+      <DependentUpon>Workout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkoutDisplay.resx">
+      <DependentUpon>WorkoutDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkoutView.resx">
+      <DependentUpon>WorkoutView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ab-Coaster-MachinegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ab-Coaster-MachineimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alternate-Leg-RaisesgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alternate-Leg-RaisesimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\armCirclesShouldersgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\armCirclesShouldersimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArnoldPressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArnoldPressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bandLatPulldowngifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bandLatPulldownimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Barbell-Bench-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Barbell-Bench-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Barbell-DeadliftgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Barbell-DeadliftimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Barbell-Lateral-LungegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Barbell-Lateral-LungeimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BARBELL-SQUATgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BARBELL-SQUATimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barbellRowgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barbellRowimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bench-DipsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bench-DipsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bent-Over-Lateral-RaisegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bent-Over-Lateral-RaiseimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BentOverRowsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BentOverRowsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bicycle-CrunchgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bicycle-CrunchimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blockIconGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blurred bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bodyweight-hip-thrustgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bodyweight-hip-thrustimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bodyweight-Single-Leg-DeadliftgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bodyweight-Single-Leg-DeadliftimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cable-Rope-Overhead-Triceps-ExtensiongifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cable-Rope-Overhead-Triceps-ExtensionimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cable-Upper-Chest-CrossoversgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cable-Upper-Chest-CrossoversimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carbon_next-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carbon_next-outline1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chestBellRowgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chestBellRowimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cross-Body-Mountain-ClimbergifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cross-Body-Mountain-ClimberimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cross-CrunchgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cross-CrunchimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CrunchgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CrunchimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Curtsey-SquatgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Curtsey-SquatimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\curtsy-lungegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\curtsy-lungeimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deadHanggifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deadHangimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deadliftgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deadliftimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Done.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dragon-FlaggifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dragon-FlagimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-4-Ways-Lateral-RaisegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-4-Ways-Lateral-RaiseimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dumbbell-deadliftsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dumbbell-deadliftsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-FlygifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-FlyimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-Goblet-SquatgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-Goblet-SquatimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-KickbackgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-KickbackimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-Lateral-RaisegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-Lateral-RaiseimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dumbbell-lungesgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dumbbell-lungesimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-PullovergifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-PulloverimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-Shoulder-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-Shoulder-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-SquatgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dumbbell-SquatimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dumbbell-sumo-deadliftgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dumbbell-sumo-deadliftimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dumbbellIconGwt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\farmersWalkgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\farmersWalkimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\femaleGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fluent_minimize-24-filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group 9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group 9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GwtLogo-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gymLoading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gymLoading2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\High-Cable-CrossovergifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\High-Cable-CrossoverimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Incline-Barbell-Bench-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Incline-Barbell-Bench-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Incline-Chest-Fly-MachinegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Incline-Chest-Fly-MachineimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Incline-dumbbell-FlygifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Incline-dumbbell-FlyimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jump-SquatgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jump-SquatimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kettlebell-Single-Leg-DeadliftgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kettlebell-Single-Leg-DeadliftimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kettlebell-SwingsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kettlebell-SwingsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\latPullDowngifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\latPullDownimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Leg-CurlgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Leg-CurlimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Leg-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Leg-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lever-Overhand-Triceps-DipgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lever-Overhand-Triceps-DipimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loadingAnimationGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loadingAnimationGWT1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loadingAnimationGWT2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout Rounded Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout Rounded Left %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout Rounded Left1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Low-Cable-CrossovergifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Low-Cable-CrossoverimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Machine-FlygifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Machine-FlyimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Machine-Shoulder-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Machine-Shoulder-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MacOS Minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maleGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medicine-Ball-Overhead-ThrowgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medicine-Ball-Overhead-ThrowimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medicine-Ball-Rotational-ThrowgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medicine-Ball-Rotational-ThrowimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mingcute_back-fill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimizeRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MJL_CombinationMark.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MJL_CombinationMark-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MJL_CombinationMark-removebg-preview1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mountain-climbergifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mountain-climberimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleAbsGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleArmGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleBackpart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleButtGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleChestGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleLegGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleShoulderGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oblique-Floor-CrunchesgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oblique-Floor-CrunchesimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\one-arm-Cable-Lateral-RaisegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\one-arm-Cable-Lateral-RaiseimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\One-Arm-Reverse-Push-DowngifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\One-Arm-Reverse-Push-DownimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\One-arm-triceps-pushdowngifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\One-arm-triceps-pushdownimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oneArmDumbbellRowgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oneArmDumbbellRowimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Overhead-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Overhead-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pec-Deck-FlygifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pec-Deck-FlyimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plankgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plankimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PullUpsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PullUpsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushdowngifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushdownimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\renegadeRowsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\renegadeRowsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Replace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reportIconGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reverse_crunchGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reverse-Lunge-KneegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reverse-Lunge-KneeimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ReverseCrunchGwt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seated-Behind-the-Neck-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seated-Behind-the-Neck-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seated-Bench-Leg-Pull-ingifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seated-Bench-Leg-Pull-inimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seated-Dumbbell-Triceps-ExtensiongifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seated-Dumbbell-Triceps-ExtensionimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seated-Shoulder-PressgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seated-Shoulder-PressimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seatedCableRowsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seatedCableRowsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settingIconGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\side-arm-circlesgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\side-arm-circlesimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Side-Lying-ClamgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Side-Lying-ClamimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sign Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standing-Cable-CrunchgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standing-Cable-CrunchimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standing-Hip-Abduction-1gifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standing-Hip-Abduction-1imgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standing-Hip-ExtensiongifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standing-Hip-ExtensionimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standing-Leg-CirclesgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standing-Leg-CirclesimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Static-LungegifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Static-LungeimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Triceps-dips-on-floorsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Triceps-dips-on-floorsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Triceps-DipsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Triceps-DipsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userIconGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wall-Push-upsgifGWT.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wall-Push-upsimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wall-SitimgGWT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manRunning.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Done %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warningGif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye-closed black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleFull.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muscleFull-.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
