@@ -142,17 +142,20 @@ namespace GWT_V2
                     userName.Text = userNameTxt.Text;
                     HeightNum.Text = heightTxt.Text;
                     WeightNum.Text = weightTxt.Text;
-                    MySqlConnection con = new MySqlConnection(connstring);
-                    con.Open();
-                    string qry = "UPDATE `users` SET `username`= @user,`height`= @height,`weight`= @weight,`body-type`= @bodyType,`bmi`= @bmi WHERE username = @id";
-                    MySqlCommand cmd = new MySqlCommand(qry, con);
-                    cmd.Parameters.AddWithValue("@id", user.Username);
-                    cmd.Parameters.AddWithValue("@user", userNameTxt.Text.Trim());
-                    cmd.Parameters.AddWithValue("@height", height);
-                    cmd.Parameters.AddWithValue("@weight", weight);
-                    cmd.Parameters.AddWithValue("@bodyType", BodyType.Text.Trim());
-                    cmd.Parameters.AddWithValue("@bmi", Convert.ToDouble(BmiNum.Text));
-                    cmd.ExecuteNonQuery();
+                   if (user.isLoggedIn)
+                    {
+                        MySqlConnection con = new MySqlConnection(connstring);
+                        con.Open();
+                        string qry = "UPDATE `users` SET `username`= @user,`height`= @height,`weight`= @weight,`body-type`= @bodyType,`bmi`= @bmi WHERE username = @id";
+                        MySqlCommand cmd = new MySqlCommand(qry, con);
+                        cmd.Parameters.AddWithValue("@id", user.Username);
+                        cmd.Parameters.AddWithValue("@user", userNameTxt.Text.Trim());
+                        cmd.Parameters.AddWithValue("@height", height);
+                        cmd.Parameters.AddWithValue("@weight", weight);
+                        cmd.Parameters.AddWithValue("@bodyType", BodyType.Text.Trim());
+                        cmd.Parameters.AddWithValue("@bmi", Convert.ToDouble(BmiNum.Text));
+                        cmd.ExecuteNonQuery();
+                    }
                     userNameTxt.Visible = false;
                     heightTxt.Visible = false;
                     weightTxt.Visible = false;
@@ -207,13 +210,16 @@ namespace GWT_V2
                     msg.ShowDialog();
                     return;
                 }
-                MySqlConnection con = new MySqlConnection(connstring);
-                con.Open();
-                string qry = "UPDATE `users` SET `weight`= @weight WHERE username = @id";
-                MySqlCommand cmd = new MySqlCommand(qry, con);
-                cmd.Parameters.AddWithValue("@id", user.Username);
-                cmd.Parameters.AddWithValue("@weight", weight);
-                cmd.ExecuteNonQuery();
+                if (user.isLoggedIn)
+                {
+                    MySqlConnection con = new MySqlConnection(connstring);
+                    con.Open();
+                    string qry = "UPDATE `users` SET `weight`= @weight WHERE username = @id";
+                    MySqlCommand cmd = new MySqlCommand(qry, con);
+                    cmd.Parameters.AddWithValue("@id", user.Username);
+                    cmd.Parameters.AddWithValue("@weight", weight);
+                    cmd.ExecuteNonQuery();
+                }
                 user.Weight = weight;
                 user.Bmi = bmi;
                 user.BodyType = BodyType.Text;
@@ -262,13 +268,16 @@ namespace GWT_V2
                     msg.ShowDialog();
                     return;
                 }
-                MySqlConnection con = new MySqlConnection(connstring);
-                con.Open();
-                string qry = "UPDATE `users` SET `height`= @height WHERE username = @id";
-                MySqlCommand cmd = new MySqlCommand(qry, con);
-                cmd.Parameters.AddWithValue("@id", user.Username);
-                cmd.Parameters.AddWithValue("@height", height);
-                cmd.ExecuteNonQuery();
+                if (user.isLoggedIn)
+                {
+                    MySqlConnection con = new MySqlConnection(connstring);
+                    con.Open();
+                    string qry = "UPDATE `users` SET `height`= @height WHERE username = @id";
+                    MySqlCommand cmd = new MySqlCommand(qry, con);
+                    cmd.Parameters.AddWithValue("@id", user.Username);
+                    cmd.Parameters.AddWithValue("@height", height);
+                    cmd.ExecuteNonQuery();
+                }
                 user.Height = height;
                 user.Bmi = bmi;
                 user.BodyType = BodyType.Text;
@@ -288,13 +297,16 @@ namespace GWT_V2
                 userNameTxt.Text = userName.Text;
             } else
             {
-                MySqlConnection con = new MySqlConnection(connstring);
-                con.Open();
-                string qry = "UPDATE `users` SET `username`= @user WHERE username = @id";
-                MySqlCommand cmd = new MySqlCommand(qry, con);
-                cmd.Parameters.AddWithValue("@id", user.Username);
-                cmd.Parameters.AddWithValue("@user", userNameTxt.Text);
-                cmd.ExecuteNonQuery();
+                if (user.isLoggedIn)
+                {
+                    MySqlConnection con = new MySqlConnection(connstring);
+                    con.Open();
+                    string qry = "UPDATE `users` SET `username`= @user WHERE username = @id";
+                    MySqlCommand cmd = new MySqlCommand(qry, con);
+                    cmd.Parameters.AddWithValue("@id", user.Username);
+                    cmd.Parameters.AddWithValue("@user", userNameTxt.Text);
+                    cmd.ExecuteNonQuery();
+                }
                 userNameTxt.Visible = false;
                 userName.Text = userNameTxt.Text;
                 user.Username = userNameTxt.Text;
