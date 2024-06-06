@@ -303,70 +303,74 @@ namespace GWT_V2
                 }
                 msgbox.ShowDialog();
                 Main.workouttoday++;
-                MySqlConnection con = new MySqlConnection(connstring);
-                con.Open();
-                string qry = "SELECT * FROM `users` WHERE username = @username";
-                MySqlCommand cmd = new MySqlCommand(qry, con);
-                cmd.Parameters.AddWithValue("@username", user.Username);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                if (Main.user.isLoggedIn)
                 {
-                    MySqlConnection conn = new MySqlConnection(connstring);
-                    conn.Open();
-                    string qry2 = "INSERT INTO `history`(`id`, `date`, `workout`, `time`) VALUES (?, ?, ?, ?)";
-                    MySqlCommand cmd2 = new MySqlCommand(qry2, conn);
-                    cmd2.Parameters.AddWithValue("param1", reader.GetInt32("id"));
-                    cmd2.Parameters.AddWithValue("param2", dateS[0]);
-                    cmd2.Parameters.AddWithValue("param3", routineLbl.Text);
-                    cmd2.Parameters.AddWithValue("param4", time);
-                    cmd2.ExecuteNonQuery();
+                    MySqlConnection con = new MySqlConnection(connstring);
+                    con.Open();
+                    string qry = "SELECT * FROM `users` WHERE username = @username";
+                    MySqlCommand cmd = new MySqlCommand(qry, con);
+                    cmd.Parameters.AddWithValue("@username", user.Username);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        MySqlConnection conn = new MySqlConnection(connstring);
+                        conn.Open();
+                        string qry2 = "INSERT INTO `history`(`id`, `date`, `workout`, `time`) VALUES (?, ?, ?, ?)";
+                        MySqlCommand cmd2 = new MySqlCommand(qry2, conn);
+                        cmd2.Parameters.AddWithValue("param1", reader.GetInt32("id"));
+                        cmd2.Parameters.AddWithValue("param2", dateS[0]);
+                        cmd2.Parameters.AddWithValue("param3", routineLbl.Text);
+                        cmd2.Parameters.AddWithValue("param4", time);
+                        cmd2.ExecuteNonQuery();
 
-                    MySqlConnection connect = new MySqlConnection(connstring);
-                    connect.Open();
-                    string query = "SELECT * FROM `report` WHERE id = @id";
-                    MySqlCommand comd = new MySqlCommand(query, connect);
-                    comd.Parameters.AddWithValue("@id", reader.GetInt32("id"));
-                    MySqlDataReader read = comd.ExecuteReader();
-                    if (read.Read())
-                    {
-                        int workoutNum = read.GetInt32("workout- number");
-                        workoutNum++;
-                        int minute = read.GetInt32("minutes");
-                        if (TimeM > 0)
+                        MySqlConnection connect = new MySqlConnection(connstring);
+                        connect.Open();
+                        string query = "SELECT * FROM `report` WHERE id = @id";
+                        MySqlCommand comd = new MySqlCommand(query, connect);
+                        comd.Parameters.AddWithValue("@id", reader.GetInt32("id"));
+                        MySqlDataReader read = comd.ExecuteReader();
+                        if (read.Read())
                         {
-                            minute += TimeM;
+                            int workoutNum = read.GetInt32("workout- number");
+                            workoutNum++;
+                            int minute = read.GetInt32("minutes");
+                            if (TimeM > 0)
+                            {
+                                minute += TimeM;
+                            }
+                            string date = read.GetString("date");
+                            int days = read.GetInt32("day");
+                            if (date != Convert.ToString(dateS[0]))
+                            {
+                                days++;
+                            }
+                            MySqlConnection conn2 = new MySqlConnection(connstring);
+                            conn2.Open();
+                            string qry3 = "UPDATE `report`SET `workout- number`= @workoutNum,`minutes`= @min,`day`= @day,`date`= @date WHERE id = @id";
+                            MySqlCommand cmd3 = new MySqlCommand(qry3, conn2);
+                            cmd3.Parameters.AddWithValue("@id", reader.GetInt32("id"));
+                            cmd3.Parameters.AddWithValue("@workoutNum", workoutNum);
+                            cmd3.Parameters.AddWithValue("@min", minute);
+                            cmd3.Parameters.AddWithValue("@day", days);
+                            cmd3.Parameters.AddWithValue("@date", dateS[0]);
+                            cmd3.ExecuteNonQuery();
                         }
-                        string date = read.GetString("date");
-                        int days = read.GetInt32("day");
-                        if (date != Convert.ToString(dateS[0]))
+                        else
                         {
-                            days++;
+                            MySqlConnection conn2 = new MySqlConnection(connstring);
+                            conn2.Open();
+                            string qry3 = "INSERT INTO `report`(`id`, `workout- number`, `minutes`, `day`, `date`) VALUES (?, ?, ?, ?, ?)";
+                            MySqlCommand cmd3 = new MySqlCommand(qry3, conn2);
+                            cmd3.Parameters.AddWithValue("param1", reader.GetInt32("id"));
+                            cmd3.Parameters.AddWithValue("param2", 1);
+                            cmd3.Parameters.AddWithValue("param3", TimeM);
+                            cmd3.Parameters.AddWithValue("param4", 1);
+                            cmd3.Parameters.AddWithValue("param5", dateS[0]);
+                            cmd3.ExecuteNonQuery();
                         }
-                        MySqlConnection conn2 = new MySqlConnection(connstring);
-                        conn2.Open();
-                        string qry3 = "UPDATE `report`SET `workout- number`= @workoutNum,`minutes`= @min,`day`= @day,`date`= @date WHERE id = @id";
-                        MySqlCommand cmd3 = new MySqlCommand(qry3, conn2);
-                        cmd3.Parameters.AddWithValue("@id", reader.GetInt32("id"));
-                        cmd3.Parameters.AddWithValue("@workoutNum", workoutNum);
-                        cmd3.Parameters.AddWithValue("@min", minute);
-                        cmd3.Parameters.AddWithValue("@day", days);
-                        cmd3.Parameters.AddWithValue("@date", dateS[0]);
-                        cmd3.ExecuteNonQuery();
-                    } else
-                    {
-                        MySqlConnection conn2 = new MySqlConnection(connstring);
-                        conn2.Open();
-                        string qry3 = "INSERT INTO `report`(`id`, `workout- number`, `minutes`, `day`, `date`) VALUES (?, ?, ?, ?, ?)";
-                        MySqlCommand cmd3 = new MySqlCommand(qry3, conn2);
-                        cmd3.Parameters.AddWithValue("param1", reader.GetInt32("id"));
-                        cmd3.Parameters.AddWithValue("param2", 1);
-                        cmd3.Parameters.AddWithValue("param3", TimeM);
-                        cmd3.Parameters.AddWithValue("param4", 1);
-                        cmd3.Parameters.AddWithValue("param5", dateS[0]);
-                        cmd3.ExecuteNonQuery();
+
+
                     }
-
-
                 }
                 Main.Show();
                 viewform.Close();

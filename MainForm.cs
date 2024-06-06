@@ -87,6 +87,10 @@ namespace GWT_V2
             profile1.WeightNum.Text = user.Weight.ToString();
             profile1.BmiNum.Text = user.Bmi.ToString();
             profile1.BodyType.Text = user.BodyType;
+            if (!user.isLoggedIn)
+            {
+                profile1.changePassBtn.Visible = false;
+            }
 
         }
         private void setWorkoutPanel(UserControl training, string title, string setByGender, string exer1, string exer2, string exer3, string exer1reps, string exer2reps, string exer3reps, Image musclegroup)
@@ -158,41 +162,44 @@ namespace GWT_V2
             profile1.Hide();
             reports1.Show();
             reports1.historyContent.Controls.Clear();
-            MySqlConnection con = new MySqlConnection(connstring);
-            con.Open();
-            string qry = "SELECT * FROM `users` WHERE username = @user";
-            MySqlCommand cmd = new MySqlCommand(qry, con);
-            cmd.Parameters.AddWithValue("@user", user.Username);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            if (user.isLoggedIn)
             {
-                MySqlConnection conn = new MySqlConnection(connstring);
-                conn.Open();
-                string qry2 = "SELECT * FROM `history` WHERE id = @id";
-                MySqlCommand cmd2 = new MySqlCommand(qry2, conn);
-                cmd2.Parameters.AddWithValue("@id", reader.GetInt32("id"));
-                MySqlDataReader reader2 = cmd2.ExecuteReader();
-                while (reader2.Read())
+                MySqlConnection con = new MySqlConnection(connstring);
+                con.Open();
+                string qry = "SELECT * FROM `users` WHERE username = @user";
+                MySqlCommand cmd = new MySqlCommand(qry, con);
+                cmd.Parameters.AddWithValue("@user", user.Username);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    HistoryControl hist = new HistoryControl();
-                    hist.date.Text = reader2.GetString("date");
-                    hist.workout.Text = reader2.GetString("workout");
-                    hist.time.Text = reader2.GetString("time");
-                    reports1.historyContent.Controls.Add(hist);
-                }
+                    MySqlConnection conn = new MySqlConnection(connstring);
+                    conn.Open();
+                    string qry2 = "SELECT * FROM `history` WHERE id = @id";
+                    MySqlCommand cmd2 = new MySqlCommand(qry2, conn);
+                    cmd2.Parameters.AddWithValue("@id", reader.GetInt32("id"));
+                    MySqlDataReader reader2 = cmd2.ExecuteReader();
+                    while (reader2.Read())
+                    {
+                        HistoryControl hist = new HistoryControl();
+                        hist.date.Text = reader2.GetString("date");
+                        hist.workout.Text = reader2.GetString("workout");
+                        hist.time.Text = reader2.GetString("time");
+                        reports1.historyContent.Controls.Add(hist);
+                    }
 
-                MySqlConnection conn2 = new MySqlConnection(connstring);
-                conn2.Open();
-                string qry3 = "SELECT * FROM `report` WHERE id = @id";
-                MySqlCommand cmd3 = new MySqlCommand(qry3, conn2);
-                cmd3.Parameters.AddWithValue("@id", reader.GetInt32("id"));
-                MySqlDataReader reader3 = cmd3.ExecuteReader();
-                if (reader3.Read())
-                {
-                    reports1.workoutTotal.Text = Convert.ToString(reader3.GetInt32("workout- number"));
-                    reports1.minuteTotal.Text = Convert.ToString(reader3.GetInt32("minutes"));
-                    reports1.daysTotal.Text = Convert.ToString(reader3.GetInt32("day"));
-                    reports1.workToday.Text = Convert.ToString(workouttoday);
+                    MySqlConnection conn2 = new MySqlConnection(connstring);
+                    conn2.Open();
+                    string qry3 = "SELECT * FROM `report` WHERE id = @id";
+                    MySqlCommand cmd3 = new MySqlCommand(qry3, conn2);
+                    cmd3.Parameters.AddWithValue("@id", reader.GetInt32("id"));
+                    MySqlDataReader reader3 = cmd3.ExecuteReader();
+                    if (reader3.Read())
+                    {
+                        reports1.workoutTotal.Text = Convert.ToString(reader3.GetInt32("workout- number"));
+                        reports1.minuteTotal.Text = Convert.ToString(reader3.GetInt32("minutes"));
+                        reports1.daysTotal.Text = Convert.ToString(reader3.GetInt32("day"));
+                        reports1.workToday.Text = Convert.ToString(workouttoday);
+                    }
                 }
             }
             
@@ -232,8 +239,16 @@ namespace GWT_V2
 
         private void signOutBtn_Click(object sender, EventArgs e)
         {
-            form.Show();
-            this.Hide();
+            if (user.isLoggedIn)
+            {
+                form.Show();
+                this.Close();
+            } else
+            {
+                Login login = new Login();
+                login.Show();
+                this.Close();
+            }
         }
     }
 }

@@ -43,6 +43,7 @@ namespace GWT_V2
             this.Header = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.passEye = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.skipBtn = new System.Windows.Forms.LinkLabel();
             this.loading11 = new GWT_V2.Loading1();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -225,6 +226,20 @@ namespace GWT_V2
             this.timer1.Interval = 2000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // skipBtn
+            // 
+            this.skipBtn.AutoSize = true;
+            this.skipBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skipBtn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.skipBtn.LinkColor = System.Drawing.Color.White;
+            this.skipBtn.Location = new System.Drawing.Point(22, 436);
+            this.skipBtn.Name = "skipBtn";
+            this.skipBtn.Size = new System.Drawing.Size(38, 20);
+            this.skipBtn.TabIndex = 33;
+            this.skipBtn.TabStop = true;
+            this.skipBtn.Text = "Skip";
+            this.skipBtn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.skipBtn_LinkClicked);
+            // 
             // loading11
             // 
             this.loading11.BackColor = System.Drawing.Color.Transparent;
@@ -250,6 +265,7 @@ namespace GWT_V2
             this.Controls.Add(this.UserLbl);
             this.Controls.Add(this.userTxt);
             this.Controls.Add(this.panel);
+            this.Controls.Add(this.skipBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -277,6 +293,7 @@ namespace GWT_V2
         private Guna.UI2.WinForms.Guna2ImageButton closeBtn;
         private Loading1 loading11;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.LinkLabel skipBtn;
     }
 }
 

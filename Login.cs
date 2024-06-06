@@ -179,5 +179,15 @@ namespace GWT_V2
                 passTxt.PasswordChar = '•';
             }
         }
+
+        private void skipBtn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Setup setup = new Setup();
+            setup.Show();
+            setup.main.user.Username = "Me";
+            setup.main.user.isLoggedIn = false;
+            this.Close();
+
+        }
     }
 }

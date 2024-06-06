@@ -143,5 +143,13 @@ namespace GWT_V2
                 ConPassTxt.PasswordChar = '•';
             }
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            setup.Show();
+            setup.main.user.Username = "Me";
+            setup.main.user.isLoggedIn = false;
+            this.Close();
+        }
     }
 }

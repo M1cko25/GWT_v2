@@ -31,6 +31,9 @@ namespace GWT_V2
         {
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.heightEdit = new Guna.UI2.WinForms.Guna2ImageCheckBox();
+            this.weightEdit = new Guna.UI2.WinForms.Guna2ImageCheckBox();
+            this.userEdit = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             this.changePassBtn = new Guna.UI2.WinForms.Guna2Button();
             this.weightTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.heightTxt = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,7 +44,9 @@ namespace GWT_V2
             this.HeightNum = new System.Windows.Forms.Label();
             this.userName = new System.Windows.Forms.Label();
             this.changePassPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.conEye = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.passEye = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.newPassTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.currPassTxt = new Guna.UI2.WinForms.Guna2TextBox();
@@ -51,11 +56,6 @@ namespace GWT_V2
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.editAll = new Guna.UI2.WinForms.Guna2ImageCheckBox();
-            this.conEye = new Guna.UI2.WinForms.Guna2ImageCheckBox();
-            this.passEye = new Guna.UI2.WinForms.Guna2ImageCheckBox();
-            this.heightEdit = new Guna.UI2.WinForms.Guna2ImageCheckBox();
-            this.weightEdit = new Guna.UI2.WinForms.Guna2ImageCheckBox();
-            this.userEdit = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             this.guna2Panel1.SuspendLayout();
             this.changePassPanel.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +98,45 @@ namespace GWT_V2
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(770, 460);
             this.guna2Panel1.TabIndex = 2;
+            // 
+            // heightEdit
+            // 
+            this.heightEdit.CheckedState.Image = global::GWT_V2.Properties.Resources.Done;
+            this.heightEdit.CheckedState.Parent = this.heightEdit;
+            this.heightEdit.HoverState.Parent = this.heightEdit;
+            this.heightEdit.Image = global::GWT_V2.Properties.Resources.Edit__1_;
+            this.heightEdit.Location = new System.Drawing.Point(313, 103);
+            this.heightEdit.Name = "heightEdit";
+            this.heightEdit.PressedState.Parent = this.heightEdit;
+            this.heightEdit.Size = new System.Drawing.Size(25, 25);
+            this.heightEdit.TabIndex = 27;
+            this.heightEdit.CheckedChanged += new System.EventHandler(this.heightEdit_CheckedChanged);
+            // 
+            // weightEdit
+            // 
+            this.weightEdit.CheckedState.Image = global::GWT_V2.Properties.Resources.Done;
+            this.weightEdit.CheckedState.Parent = this.weightEdit;
+            this.weightEdit.HoverState.Parent = this.weightEdit;
+            this.weightEdit.Image = global::GWT_V2.Properties.Resources.Edit__1_;
+            this.weightEdit.Location = new System.Drawing.Point(643, 103);
+            this.weightEdit.Name = "weightEdit";
+            this.weightEdit.PressedState.Parent = this.weightEdit;
+            this.weightEdit.Size = new System.Drawing.Size(25, 25);
+            this.weightEdit.TabIndex = 26;
+            this.weightEdit.CheckedChanged += new System.EventHandler(this.weightEdit_CheckedChanged);
+            // 
+            // userEdit
+            // 
+            this.userEdit.CheckedState.Image = global::GWT_V2.Properties.Resources.Done;
+            this.userEdit.CheckedState.Parent = this.userEdit;
+            this.userEdit.HoverState.Parent = this.userEdit;
+            this.userEdit.Image = global::GWT_V2.Properties.Resources.Edit__1_;
+            this.userEdit.Location = new System.Drawing.Point(313, 37);
+            this.userEdit.Name = "userEdit";
+            this.userEdit.PressedState.Parent = this.userEdit;
+            this.userEdit.Size = new System.Drawing.Size(25, 25);
+            this.userEdit.TabIndex = 25;
+            this.userEdit.CheckedChanged += new System.EventHandler(this.userEdit_CheckedChanged);
             // 
             // changePassBtn
             // 
@@ -264,6 +303,19 @@ namespace GWT_V2
             this.changePassPanel.TabIndex = 5;
             this.changePassPanel.Visible = false;
             // 
+            // conEye
+            // 
+            this.conEye.CheckedState.Image = global::GWT_V2.Properties.Resources.eye_black;
+            this.conEye.CheckedState.Parent = this.conEye;
+            this.conEye.HoverState.Parent = this.conEye;
+            this.conEye.Image = global::GWT_V2.Properties.Resources.eye_closed_black;
+            this.conEye.Location = new System.Drawing.Point(553, 41);
+            this.conEye.Name = "conEye";
+            this.conEye.PressedState.Parent = this.conEye;
+            this.conEye.Size = new System.Drawing.Size(27, 23);
+            this.conEye.TabIndex = 29;
+            this.conEye.CheckedChanged += new System.EventHandler(this.conEye_CheckedChanged);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -273,6 +325,19 @@ namespace GWT_V2
             this.label7.Size = new System.Drawing.Size(97, 17);
             this.label7.TabIndex = 5;
             this.label7.Text = "New Password";
+            // 
+            // passEye
+            // 
+            this.passEye.CheckedState.Image = global::GWT_V2.Properties.Resources.eye_black;
+            this.passEye.CheckedState.Parent = this.passEye;
+            this.passEye.HoverState.Parent = this.passEye;
+            this.passEye.Image = global::GWT_V2.Properties.Resources.eye_closed_black;
+            this.passEye.Location = new System.Drawing.Point(266, 41);
+            this.passEye.Name = "passEye";
+            this.passEye.PressedState.Parent = this.passEye;
+            this.passEye.Size = new System.Drawing.Size(27, 23);
+            this.passEye.TabIndex = 28;
+            this.passEye.CheckedChanged += new System.EventHandler(this.passEye_CheckedChanged);
             // 
             // label6
             // 
@@ -399,71 +464,6 @@ namespace GWT_V2
             this.editAll.TabIndex = 3;
             this.editAll.CheckedChanged += new System.EventHandler(this.guna2ImageCheckBox1_CheckedChanged);
             // 
-            // conEye
-            // 
-            this.conEye.CheckedState.Image = global::GWT_V2.Properties.Resources.eye_black;
-            this.conEye.CheckedState.Parent = this.conEye;
-            this.conEye.HoverState.Parent = this.conEye;
-            this.conEye.Image = global::GWT_V2.Properties.Resources.eye_closed_black;
-            this.conEye.Location = new System.Drawing.Point(553, 41);
-            this.conEye.Name = "conEye";
-            this.conEye.PressedState.Parent = this.conEye;
-            this.conEye.Size = new System.Drawing.Size(27, 23);
-            this.conEye.TabIndex = 29;
-            this.conEye.CheckedChanged += new System.EventHandler(this.conEye_CheckedChanged);
-            // 
-            // passEye
-            // 
-            this.passEye.CheckedState.Image = global::GWT_V2.Properties.Resources.eye_black;
-            this.passEye.CheckedState.Parent = this.passEye;
-            this.passEye.HoverState.Parent = this.passEye;
-            this.passEye.Image = global::GWT_V2.Properties.Resources.eye_closed_black;
-            this.passEye.Location = new System.Drawing.Point(266, 41);
-            this.passEye.Name = "passEye";
-            this.passEye.PressedState.Parent = this.passEye;
-            this.passEye.Size = new System.Drawing.Size(27, 23);
-            this.passEye.TabIndex = 28;
-            this.passEye.CheckedChanged += new System.EventHandler(this.passEye_CheckedChanged);
-            // 
-            // heightEdit
-            // 
-            this.heightEdit.CheckedState.Image = global::GWT_V2.Properties.Resources.Done;
-            this.heightEdit.CheckedState.Parent = this.heightEdit;
-            this.heightEdit.HoverState.Parent = this.heightEdit;
-            this.heightEdit.Image = global::GWT_V2.Properties.Resources.Edit__1_;
-            this.heightEdit.Location = new System.Drawing.Point(313, 103);
-            this.heightEdit.Name = "heightEdit";
-            this.heightEdit.PressedState.Parent = this.heightEdit;
-            this.heightEdit.Size = new System.Drawing.Size(25, 25);
-            this.heightEdit.TabIndex = 27;
-            this.heightEdit.CheckedChanged += new System.EventHandler(this.heightEdit_CheckedChanged);
-            // 
-            // weightEdit
-            // 
-            this.weightEdit.CheckedState.Image = global::GWT_V2.Properties.Resources.Done;
-            this.weightEdit.CheckedState.Parent = this.weightEdit;
-            this.weightEdit.HoverState.Parent = this.weightEdit;
-            this.weightEdit.Image = global::GWT_V2.Properties.Resources.Edit__1_;
-            this.weightEdit.Location = new System.Drawing.Point(643, 103);
-            this.weightEdit.Name = "weightEdit";
-            this.weightEdit.PressedState.Parent = this.weightEdit;
-            this.weightEdit.Size = new System.Drawing.Size(25, 25);
-            this.weightEdit.TabIndex = 26;
-            this.weightEdit.CheckedChanged += new System.EventHandler(this.weightEdit_CheckedChanged);
-            // 
-            // userEdit
-            // 
-            this.userEdit.CheckedState.Image = global::GWT_V2.Properties.Resources.Done;
-            this.userEdit.CheckedState.Parent = this.userEdit;
-            this.userEdit.HoverState.Parent = this.userEdit;
-            this.userEdit.Image = global::GWT_V2.Properties.Resources.Edit__1_;
-            this.userEdit.Location = new System.Drawing.Point(313, 37);
-            this.userEdit.Name = "userEdit";
-            this.userEdit.PressedState.Parent = this.userEdit;
-            this.userEdit.Size = new System.Drawing.Size(25, 25);
-            this.userEdit.TabIndex = 25;
-            this.userEdit.CheckedChanged += new System.EventHandler(this.userEdit_CheckedChanged);
-            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,12 +505,12 @@ namespace GWT_V2
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
-        private Guna.UI2.WinForms.Guna2Button changePassBtn;
         private Guna.UI2.WinForms.Guna2ImageCheckBox userEdit;
         private Guna.UI2.WinForms.Guna2ImageCheckBox editAll;
         private Guna.UI2.WinForms.Guna2ImageCheckBox heightEdit;
         private Guna.UI2.WinForms.Guna2ImageCheckBox weightEdit;
         private Guna.UI2.WinForms.Guna2ImageCheckBox conEye;
         private Guna.UI2.WinForms.Guna2ImageCheckBox passEye;
+        public Guna.UI2.WinForms.Guna2Button changePassBtn;
     }
 }
