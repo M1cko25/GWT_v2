@@ -133,7 +133,7 @@ namespace GWT_V2
         private void signUpLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             SignUp signup = new SignUp();
-            signup.Hide();
+            signup.Show();
             this.Hide();
         }
 
