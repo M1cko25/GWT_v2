@@ -43,7 +43,7 @@ namespace GWT_V2
         private void MainForm_Load(object sender, EventArgs e)
         {
             usernameLbl.Text = user.Username;
-            profile1.Hide();
+            profile1.Show();
             exercises1.Hide();
             reports1.Hide();
             training1.Show();
